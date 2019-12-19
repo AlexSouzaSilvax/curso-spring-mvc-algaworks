@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.algaworks.cobranca.model.Titulo;
@@ -19,8 +20,27 @@ public class TituloJsonController {
 	@CrossOrigin
 	@RequestMapping("/todosTitulos")
 	public List<Titulo> getTodosTitulos() {		
-		List<Titulo> listaTitulos = titulos.findAll();		
+
+		List<Titulo> listaTitulos;
+		
+		try {
+			listaTitulos = titulos.findAll();
+		} catch(Exception e ) {
+			System.out.println("Erro arquivo: TituloJsonController.java no metodo: deleteTituloId();");
+			return null;
+		}
+
 		return listaTitulos;
 	}
-	
+
+	@CrossOrigin
+	@RequestMapping("/deleteTituloId={id}")
+	public void deleteTituloId(@PathVariable Long id) {
+		try {
+			titulos.deleteById(id);
+		} catch(Exception e) {
+			System.out.println("Erro arquivo: TituloJsonController.java no metodo: deleteTituloId();");
+		}
+	}
+
 }

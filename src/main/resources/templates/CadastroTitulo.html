@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
@@ -21,9 +20,11 @@
 		</div>
 	</nav>
 
-	<form class="form-horizontal" method="POST" action="/titulos">
+	<form class="form-horizontal" method="POST" action="/titulos"
+		th:object="${titulo}">
 
-		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+		<div class="alert alert-success"
+			th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}"></span>
 		</div>
 
@@ -33,12 +34,17 @@
 			</div>
 
 			<div class="card-body">
-				<div class="form-group">
+
+				<div class="form-group aw-required"
+					th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+
 					<label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="descricao"
-							name="descricao" />
+							name="descricao" autofocus="autofocus" />
 					</div>
+
 				</div>
 				<div class="form-group">
 					<label for="dataVencimento" class="col-sm-2 col-form-label">Data
@@ -60,7 +66,8 @@
 						<select class="form-control" name="status">
 							<!--option value="PENDENTE">Pendente</option>
 							<option value="RECEBIDO">Recebido</option-->
-							<option th:each="status : ${todosStatusTitulo}" th:value="${status}" th:text="${status.descricao}"></option>
+							<option th:each="status : ${todosStatusTitulo}"
+								th:value="${status}" th:text="${status.descricao}"></option>
 						</select>
 					</div>
 				</div>
@@ -73,6 +80,8 @@
 		</div>
 	</form>
 
-	<script src="/js/bootstrap.min.js"></script>
+	<!-- https://code.jquery.com/jquery-3.4.1.slim.min.js -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>	
 </body>
 </html>
