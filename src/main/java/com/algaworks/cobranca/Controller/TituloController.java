@@ -14,7 +14,8 @@ import com.algaworks.cobranca.model.Titulo;
 import com.algaworks.cobranca.repository.Titulos;
 
 @Controller
-@RequestMapping("/titulos")
+//@RequestMapping("/titulos") original
+@RequestMapping("/") // alterado para mapear no / por causa do heroukuapp
 public class TituloController {
 
 	@Autowired
@@ -41,3 +42,4 @@ public class TituloController {
 	}
 	
 }
+
