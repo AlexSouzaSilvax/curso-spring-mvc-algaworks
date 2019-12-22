@@ -1,28 +1,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title>Pesquisa de título</title>
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"	
+	layout:decorator="Template">	
 
+<head>
+<title>Pesquisa de títulos</title>
 </head>
 
-<body>
-
-	<nav class="navbar navbar-inverse navbar-static-top bg-dark">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="https://www.algaworks.com/"
-					target="_blank"> <img alt="AlgaWorks"
-					src="/images/logo-algaworks.png" />
-				</a>
-			</div>
-		</div>
-	</nav>
+<section layout:fragment="conteudo">
 
 	<div class="card card-default">
+
 		<div class="card-header">
 			<h3 class="card-title">Pesquisa de Títulos</h3>
 		</div>
@@ -57,9 +46,6 @@
 
 		</div>
 	</div>
+</section>
 
-	<!-- https://code.jquery.com/jquery-3.4.1.slim.min.js -->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-</body>
 </html>

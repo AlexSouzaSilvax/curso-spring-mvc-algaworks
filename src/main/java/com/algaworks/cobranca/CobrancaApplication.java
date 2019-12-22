@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties.Local
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 @SpringBootApplication
 public class CobrancaApplication {
 
@@ -19,5 +21,11 @@ public class CobrancaApplication {
 	public FixedLocaleResolver localeResolver() {
 		return new FixedLocaleResolver(new Locale("pt", "BR"));
 	}
+	
+	@Bean
+	public LayoutDialect layoutDialect() {
+	    return new LayoutDialect();
+	}
 
 }
+ 
