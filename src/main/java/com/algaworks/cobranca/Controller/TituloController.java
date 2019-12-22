@@ -16,40 +16,40 @@ import com.algaworks.cobranca.model.StatusTitulo;
 import com.algaworks.cobranca.model.Titulo;
 import com.algaworks.cobranca.repository.Titulos;
 
-@Controller 
+@Controller
 @RequestMapping("/titulos")
 public class TituloController {
- 
+
 	@Autowired
 	private Titulos titulos;
+	
+	//ModelAndView mv = new ModelAndView("CadastroTitulo");
 
-	//ModelAndView mvCadTitulo = new ModelAndView("CadastroTitulo");
-	   
 	@RequestMapping()
 	public ModelAndView lista() {
-		ModelAndView mvCadTitulo = new ModelAndView("PesquisaTitulo");		
-		return mvCadTitulo;
+		List<Titulo> listaTitulos = titulos.findAll();
+		ModelAndView mv = new ModelAndView("PesquisaTitulo");
+		mv.addObject("titulos", listaTitulos);
+		return mv;
 	}
-	
-	@RequestMapping("/novo")
+
+	@RequestMapping("/novo") 
 	public ModelAndView novo(Titulo titulo) {
-		ModelAndView mvCadTitulo = new ModelAndView("CadastroTitulo");
-		return mvCadTitulo;
+		ModelAndView mv = new ModelAndView("CadastroTitulo");
+		return mv;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(@Valid Titulo titulo) {			
-		ModelAndView mvCadTitulo = new ModelAndView("CadastroTitulo");
+	public ModelAndView salvar(@Valid Titulo titulo) {	
+		ModelAndView mv = new ModelAndView("CadastroTitulo");
 		titulos.save(titulo);		
-		mvCadTitulo.addObject("mensagem", "Título salvo com sucesso!");
-		
-		return mvCadTitulo;
+		mv.addObject("mensagem", "Título salvo com sucesso!");
+		return mv;
 	}
-	
+
 	@ModelAttribute("todosStatusTitulo")
 	public List<StatusTitulo> todosStatusTitulo() {
 		return Arrays.asList(StatusTitulo.values());
 	}
-	
-}
 
+}

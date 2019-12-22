@@ -5,7 +5,7 @@
 	layout:decorator="Template">	
 
 <head>
-<title>Pesquisa de títulos</title>
+<title>Pesquisa</title>
 </head>
 
 <section layout:fragment="conteudo">
@@ -34,15 +34,29 @@
 						</tr> 
 					</thead>
 					<tbody>
-						<!-- tr><td colspan="6">Nenhum título foi encontrado</td></tr-->
+						<tr th:each="titulo : ${titulos}">
+							<td class="text-center" th:text="${titulo.codigo}"></td>
+							<td class="text-center" th:text="${titulo.descricao}"></td>
+							<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
+							<td class="text-center" th:text="|R$ ${{titulo.valor}}|"></td>
+							<td class="text-center">
+								<button class="btn" th:text="${titulo.status.descricao}" disabled
+								th:classappend="${titulo.pendente ? 'btn-danger' : 'btn-success'}"></button>		
+							</td>
+							<td class="text-center"></td>
+						</tr>			
+					
 						<tr>
+							<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum título foi encontrado</td>
+						</tr>
+						<!--<tr>
 							<td class="text-center">1</td>
 							<td class="text-center">Apenas um teste</td>
 							<td class="text-center">03/03/2001</td>
 							<td class="text-center">R$ 199,99</td>
 							<td class="text-center">Recebido</td>
 							<td class="text-center"></td>
-						</tr>
+						</tr>-->
 					</tbody>
 				</table>
 			</div>
