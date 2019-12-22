@@ -3,17 +3,26 @@
 }
 
 .card {
-	margin: 12px;	
+	margin: 12px;
 }
 
 .alert {
-	margin: 10px;	
+	margin: 10px;
 }
 
-.aw-required > .control-label:after {
+.aw-required>.control-label:after {
 	content: "*";
 }
 
 .panel-body {
 	margin: 25px;
+}
+
+.aw-link-panel {
+	float: right;
+}
+
+.aw-titulo-panel {
+	float: left;
+	padding-top: 2px;
 }

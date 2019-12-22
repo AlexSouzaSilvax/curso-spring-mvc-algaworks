@@ -23,22 +23,23 @@ public class TituloController {
 	@Autowired
 	private Titulos titulos;
 
-	ModelAndView mvCadTitulo = new ModelAndView("CadastroTitulo");
+	//ModelAndView mvCadTitulo = new ModelAndView("CadastroTitulo");
 	   
 	@RequestMapping()
 	public ModelAndView lista() {
-		mvCadTitulo = new ModelAndView("PesquisaTitulo");
+		ModelAndView mvCadTitulo = new ModelAndView("PesquisaTitulo");		
 		return mvCadTitulo;
 	}
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Titulo titulo) {
+		ModelAndView mvCadTitulo = new ModelAndView("CadastroTitulo");
 		return mvCadTitulo;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvar(@Valid Titulo titulo) {			
-		
+		ModelAndView mvCadTitulo = new ModelAndView("CadastroTitulo");
 		titulos.save(titulo);		
 		mvCadTitulo.addObject("mensagem", "Título salvo com sucesso!");
 		
