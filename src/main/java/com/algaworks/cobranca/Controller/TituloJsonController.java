@@ -11,7 +11,7 @@ import com.algaworks.cobranca.model.Titulo;
 import com.algaworks.cobranca.repository.Titulos;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/titulos/api")
 public class TituloJsonController {
 
 	@Autowired
@@ -26,7 +26,7 @@ public class TituloJsonController {
 		try {
 			listaTitulos = titulos.findAll();
 		} catch(Exception e ) {
-			System.out.println("Erro arquivo: TituloJsonController.java no metodo: deleteTituloId();");
+			System.out.println("Erro arquivo: TituloJsonController.java no metodo: getTodosTitulos();");
 			return null;
 		}
 
@@ -34,7 +34,7 @@ public class TituloJsonController {
 	}
 
 	@CrossOrigin
-	@RequestMapping("/deleteTituloId={id}")
+	@RequestMapping("/apagarTituloId={id}")
 	public void deleteTituloId(@PathVariable Long id) {
 		try {
 			titulos.deleteById(id);
