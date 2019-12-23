@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"	
-	layout:decorator="Template">	
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Template">
 
 <head>
 <title>Pesquisa</title>
@@ -14,16 +14,21 @@
 
 		<div class="card-header">
 			<div class="clearfix">
+				
 				<h3 class="card-title aw-titulo-panel">Pesquisa de Títulos</h3>
-				<a class="btn btn-link aw-link-panel" href="/titulos/novo">Novo</a>
-				<a class="btn btn-link aw-link-panel" href="/titulos/api/todosTitulos" target="_blank">API</a> <!--  (http://192.168.1.8:8080/titulos/api/todosTitulos) -->
+				
+				<a class="btn btn-primary aw-link-panel" href="/titulos/novo">Novo</a>
+								
+				<a class="btn btn-outline-primary aw-link-panel"
+					href="/titulos/api/todosTitulos" target="_blank">API</a>
+				<!--  (http://192.168.1.8:8080/titulos/api/todosTitulos) -->
 			</div>
 		</div>
 
 		<div class="panel-body">
 
 			<div class="table-responsive">
-				<!--<table class="table table-bordered table-striped">-->				
+				<!--<table class="table table-bordered table-striped">-->
 				<table class="table table-hover table-dark">
 					<thead>
 						<tr>
@@ -33,26 +38,28 @@
 							<th class="text-center">Valor</th>
 							<th class="text-center">Status</th>
 							<th class="text-center">Ações</th>
-						</tr> 
+						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="titulo : ${titulos}">
 							<td class="text-center width5" th:text="${titulo.codigo}"></td>
 							<td class="text-center" th:text="${titulo.descricao}"></td>
-							<td class="text-center width10" th:text="${{titulo.dataVencimento}}"></td>
+							<td class="text-center width10"
+								th:text="${{titulo.dataVencimento}}"></td>
 							<td class="text-center width15" th:text="|R$ ${{titulo.valor}}|"></td>
 							<td class="text-center width5">
 								<button class="btn" th:text="${titulo.status.descricao}"
-								th:classappend="${titulo.pendente ? 'btn-danger' : 'btn-success'}"></button>		
+									th:classappend="${titulo.pendente ? 'btn-danger' : 'btn-success'}"></button>
 							</td>
 							<td class="text-center width10">
 								<button class="btn btn-outline-primary btn-sm" th:text="Alterar"></button>
-								<button class="btn btn-outline-danger btn-sm" th:text="Apagar"></button>							
+								<button class="btn btn-outline-danger btn-sm" th:text="Apagar"></button>
 							</td>
-						</tr>			
-					
+						</tr>
+
 						<tr>
-							<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum título foi encontrado</td>
+							<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
+								título foi encontrado</td>
 						</tr>
 						<!--<tr>
 							<td class="text-center">1</td>

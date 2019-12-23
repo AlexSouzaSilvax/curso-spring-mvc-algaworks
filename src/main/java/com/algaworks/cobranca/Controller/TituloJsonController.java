@@ -24,7 +24,7 @@ public class TituloJsonController {
 		List<Titulo> listaTitulos;
 		
 		try {
-			listaTitulos = titulos.findAll();
+			listaTitulos = titulos.findAll();			
 		} catch(Exception e ) {
 			System.out.println("Erro arquivo: TituloJsonController.java no metodo: getTodosTitulos();");
 			return null;
